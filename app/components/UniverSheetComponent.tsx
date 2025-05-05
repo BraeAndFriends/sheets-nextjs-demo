@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
- 
+import ChatInterface from './ChatInterface'
+
 import { createUniver, defaultTheme, LocaleType, merge } from '@univerjs/presets';
 import { UniverSheetsCorePreset } from '@univerjs/presets/preset-sheets-core';
 import UniverPresetSheetsCoreEnUS from '@univerjs/presets/preset-sheets-core/locales/en-US';
@@ -39,7 +40,7 @@ const UniverSheetComponent = function () {
         }),
         UniverSheetsDrawingPreset(),
         UniverSheetsAdvancedPreset({
-          universerEndpoint: 'http://localhost:8000',
+          universerEndpoint: 'http://3.25.176.159:8000',
         }),
       ],
     });
@@ -114,7 +115,7 @@ const UniverSheetComponent = function () {
  
   return (
     <div>
-      <div style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px', marginLeft: '10px', marginTop: '10px', display: 'flex', alignItems: 'center' }}>
+      <div style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px', marginLeft: '10px', marginTop: '10px', display: 'flex' }}>
         <span>Spreadsheet Demo</span>
         <button 
           onClick={triggerFileInput}
@@ -152,7 +153,12 @@ const UniverSheetComponent = function () {
           style={{ display: 'none' }}
         />
       </div>
-      <div style={{ width: '100vw', height: '90vh' }} ref={containerRef}></div>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ width: '20vw', height: '90vh', backgroundColor: '#f8f9fa', borderRight: '1px solid #e9ecef' }}>
+          <ChatInterface />
+        </div>
+        <div style={{ width: '80vw', height: '90vh' }} ref={containerRef}></div>
+      </div>
     </div>
   );
 };
